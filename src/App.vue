@@ -1,28 +1,56 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="vue-smart-cascader">
+    <el-select
+      v-model="selectedData"
+      size="small">
+      <el-option
+        v-for="item in selectList"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"></el-option>  
+    </el-select>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import {
+    Select,
+    Option
+  } from 'element-ui'
+
+  export default {
+    name: 'VueSmartCascader',
+    components: {
+      'el-select': Select,
+      'el-option': Option,
+    },
+    props: {
+    },
+    data () {
+      return {
+        selectedData: '',
+        selectList: [
+          { label: '苏州', value: 'suzhou' },
+          { label: '无锡', value: 'wuxi' },
+          { label: '上海', value: 'shanghai' },
+        ]
+      }
+    },
+    computed: {
+    },
+    watch: {
+    },
+    methods: {
+    },
+    created () {
+    },
+    mounted () {
+    },
+    beforeDestroy () {
+    },
+    destroyed () {
+    }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
 </style>

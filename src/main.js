@@ -1,8 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
+import VueSmartCascader from './App.vue'
 
-Vue.config.productionTip = false
+const install = v => {
+  if (install.installed) return
+  v.component('VueSmartCascader', VueSmartCascader)
+}
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+export default install
+
+export const component = {
+  VueSmartCascader
+}
