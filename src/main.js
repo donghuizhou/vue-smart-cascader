@@ -1,4 +1,5 @@
 import VueSmartCascader from './App.vue'
+import './style/common.css'
 
 const install = v => {
   if (install.installed) return

@@ -4,6 +4,6 @@ const currEnv = process.env.NODE_ENV
 
 module.exports = defineConfig({
   configureWebpack: {
-    entry: currEnv === 'development' ? './example/main.js' : './src/index.js'
+    entry: currEnv === 'development' ? './example/main.js' : './src/main.js'
   }
 })
