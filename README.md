@@ -1,19 +1,17 @@
 # vue-smart-cascader
 
-## Project setup
+### Project setup
 ```
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+// Compiles and hot-reloads for development
 npm run serve
+
+// Compiles and minifies for production
+npmrun build
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 配置项
 
 | 参数          | 说明                | 类型    | 可选值                 | 默认值 |
 | ----          | ----               | ----    | ----                   | ---- |
@@ -23,7 +21,7 @@ npm run build
 | placeholder   | 输入框占位文本      | String   | -                     | - |
 | options       | 数据源，见下表              | Array   | -                     | - |
 
-#### options
+### options
 
 | 参数     | 说明                | 类型    | 可选值                 | 默认值 |
 | ----     | ----               | ----    | ----                   | ---- |
