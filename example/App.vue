@@ -1,21 +1,29 @@
 <template>
-  <div>
+  <div class="wrap">
     <VueSmartCascader
-      v-model="value"
+      v-model="cascaderValue"
       :filterable="true"
-      :options="options" />
+      :options="options"
+      :checkStrictly="false"
+      placeholder="请选择区域" />
+    <el-button type="primary" size="small" @click="handleGetValue" style="margin: 0 0 0 10px;">获取</el-button>
   </div>
 </template>
 
 <script>
+  import {
+    Button
+  } from 'element-ui'
   export default {
     name: '',
-    components: {},
+    components: {
+      'el-button': Button
+    },
     props: {
     },
     data () {
       return {
-        value: [],
+        cascaderValue: [],
         options: [
           {
             value: 'jiangsu',
@@ -139,6 +147,9 @@
     watch: {
     },
     methods: {
+      handleGetValue () {
+        console.log(this.cascaderValue)
+      }
     },
     created () {
     },
@@ -151,4 +162,7 @@
   }
 </script>
 <style lang="less" scoped>
+.wrap {
+  padding: 10px 0 0 10px;
+}
 </style>

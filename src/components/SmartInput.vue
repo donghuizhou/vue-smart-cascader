@@ -1,13 +1,15 @@
 <template>
   <el-input
-    v-model="filterValue"
+    v-model="smartValue"
     :size="size"
     :readonly="!filterable"
     @input="deboucedInput"
     @focus="onFocus"
     @blur="onBlur"
     @mouseenter.native="showClear = true"
-    @mouseleave.native="showClear = false">
+    @mouseleave.native="showClear = false"
+    :class="{'cannot-filter': !filterable}"
+    :placeholder="placeholder">
     <i
       slot="suffix"
       class="el-icon-error"
@@ -16,8 +18,8 @@
       slot="suffix"
       :class="{
         'el-input__icon': true,
-        'el-icon-arrow-up': showPanel,
-        'el-icon-arrow-down': !showPanel}"></i>
+        'el-icon-arrow-up': showPopover,
+        'el-icon-arrow-down': !showPopover}"></i>
   </el-input>
 </template>
 <script>
@@ -35,19 +37,23 @@
         type: String,
         default: 'small'
       },
-      showPanel: {
+      showPopover: {
         type: Boolean,
         default: false
       },
       filterable: { // 是否可搜索
         type: Boolean,
         default: false
+      },
+      placeholder: {
+        type: String,
+        default: '请选择'
       }
     },
     data () {
       return {
         showClear: false,
-        filterValue: ''
+        smartValue: ''
       }
     },
     computed: {
@@ -56,7 +62,7 @@
     },
     methods: {
       deboucedInput: debounce(function (val) {
-        console.log(val)
+        this.$emit('inputFilter', val)
       }, 500),
       onFocus () {
         this.showClear = true
@@ -65,7 +71,10 @@
       onBlur () {
         this.showClear = false
         this.$emit('inputBlur')
-      }
+      },
+      setSmartValue (val) {
+        this.smartValue = val
+      },
     },
     created () {
     },
@@ -78,4 +87,7 @@
   }
 </script>
 <style lang="less" scoped>
+.cannot-filter /deep/ .el-input__inner {
+  cursor: pointer;
+}
 </style>
